@@ -50,7 +50,9 @@ object Challenge_2017_05_01_1 extends App {
   private val test_3_true = List(-92474, -61685, -55348, -42019, -35902, -7815, -5579, 4490, 14778, 19399, 34202, 46624, 55800, 57719, 60260, 71511, 75665, 82754)
   private val test_4_true = List(-85029, -84549, -82646, -80493, -73373, -57478, -56711, -42456, -38923, -29277, -3685, -3164, 26863, 29890, 37187, 46607, 69300, 84808)
   private val test_5_true = List(-87565, -71009, -49312, -47554, -27197, 905, 2839, 8657, 14622, 32217, 35567, 38470, 46885, 59236, 64704, 82944, 86902, 90487)
-
+  private val test_6_true = List(0)
+  private val test_7_true = List(-3, 1, 2)
+  private val test_8_true = List(-98634, -86888, -48841, -40483, 2612, 9225, 17848, 71967, 84319, 88875)
 
   println(test_1_false + " -> " + sumEqualsZero(createCombinations(test_1_false)))
   println(test_2_false + " -> " + sumEqualsZero(createCombinations(test_2_false)))
@@ -58,11 +60,14 @@ object Challenge_2017_05_01_1 extends App {
   println(test_4_false + " -> " + sumEqualsZero(createCombinations(test_4_false)))
   println(test_5_false + " -> " + sumEqualsZero(createCombinations(test_5_false)))
 
-  println(test_1_true+ " -> " + sumEqualsZero(createCombinations(test_1_true)))
-  println(test_2_true+ " -> " + sumEqualsZero(createCombinations(test_2_true)))
-  println(test_3_true+ " -> " + sumEqualsZero(createCombinations(test_3_true)))
-  println(test_4_true+ " -> " + sumEqualsZero(createCombinations(test_4_true)))
-  println(test_5_true+ " -> " + sumEqualsZero(createCombinations(test_5_true)))
+  println(test_1_true + " -> " + sumEqualsZero(createCombinations(test_1_true)))
+  println(test_2_true + " -> " + sumEqualsZero(createCombinations(test_2_true)))
+  println(test_3_true + " -> " + sumEqualsZero(createCombinations(test_3_true)))
+  println(test_4_true + " -> " + sumEqualsZero(createCombinations(test_4_true)))
+  println(test_5_true + " -> " + sumEqualsZero(createCombinations(test_5_true)))
+  println(test_6_true + " -> " + sumEqualsZero(createCombinations(test_6_true)))
+  println(test_7_true + " -> " + sumEqualsZero(createCombinations(test_7_true)))
+  println(test_8_true + " -> " + sumEqualsZero(createCombinations(test_8_true)))
 
 
 }
