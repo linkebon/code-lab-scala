@@ -1,0 +1,16 @@
+log
+logs
+target
+node_modules
+/.idea
+/.idea_modules
+/.classpath
+/.project
+/.settings
+/RUNNING_PID
+_Installation/Vagrant/.vagrant/
+*.retry
+*.orig
+.DS_Store
+
+/_Vagrant/.vagrant/
