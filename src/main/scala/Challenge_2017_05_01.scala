@@ -7,12 +7,8 @@
   */
 object Challenge_2017_05_01 extends App {
 
-  def negativeValueEqualsZero(numbers: List[Int]): Boolean = {
-    for (number <- numbers) {
-      if (numbers.contains(number * -1))
-        return true
-    }
-    false
+  def myFunction(numbers: List[Int]): Boolean = {
+    numbers.exists(i => numbers.contains(i * -1))
   }
 
   val true_1 = List(-97364, -71561, -69336, 19675, 71561, 97863)
@@ -23,11 +19,11 @@ object Challenge_2017_05_01 extends App {
   val false_2 = List(1, 2, 3)
   val false_3 = List()
 
-  println(false_1 + " -> " + negativeValueEqualsZero(false_1))
-  println(false_2 + " -> " + negativeValueEqualsZero(false_2))
-  println(false_3 + " -> " + negativeValueEqualsZero(false_3))
+  println(false_1 + " -> " + myFunction(false_1))
+  println(false_2 + " -> " + myFunction(false_2))
+  println(false_3 + " -> " + myFunction(false_3))
 
-  println(true_1 + " -> " + negativeValueEqualsZero(true_1))
-  println(true_2 + " -> " + negativeValueEqualsZero(true_2))
-  println(true_3 + " -> " + negativeValueEqualsZero(true_3))
+  println(true_1 + " -> " + myFunction(true_1))
+  println(true_2 + " -> " + myFunction(true_2))
+  println(true_3 + " -> " + myFunction(true_3))
 }
