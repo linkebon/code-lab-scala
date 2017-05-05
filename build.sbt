@@ -1,4 +1,4 @@
-name := "challanges"
+name := "reddit_challenges"
 
 version := "1.0"
 
