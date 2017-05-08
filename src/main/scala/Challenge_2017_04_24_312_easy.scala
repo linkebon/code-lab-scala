@@ -1,3 +1,4 @@
+import scala.io.StdIn
 
 /**
   * L33tspeak - the act of speaking like a computer hacker (or hax0r) - was popularized in the late 1990s as a mechanism of abusing ASCII art and character mappings to confuse outsiders. It was a lot of fun. One popular comic strip in 2000 showed just how far the joke ran.
@@ -23,11 +24,21 @@ object Challenge_2017_04_24_312_easy extends App {
   }
 
   def translator(toLeet: Boolean): Map[String, String] = if (toLeet) toLeetTranslation else fromLeetTranslation
-  def translate(str: String, toLeet: Boolean): String = str.map(s => translator(toLeet).getOrElse(s.toUpper.toString, s.toString)).mkString
 
-  println("storm -> " + translate("storm", true))
-  println("31337" -> translate("31337", false))
-  println("I am elite." -> translate("I am elite.", true))
-  println("Eye need help!" -> translate("Eye need help!", true))
+  def translate(str: String, toLeet: Boolean): String = {
+    var translated = str.toUpperCase
+    translator(toLeet).foreach { case (k, v) => translated = translated.replace(k, v) }
+    translated
+  }
+
+  println("\n--- From 1337 ---")
+  println("3Y3 (\\)33d j00 t0 g37 d4 d0c70r." + " -> " + translate("3Y3 (\\)33d j00 t0 g37 d4 d0c70r.", false))
+  println("1 n33d m4 p1llz!" + " -> " + translate("1 n33d m4 p1llz!", false))
+  println("Eye need help!" + " -> " + translate("Eye need help!", false))
+
+  println("\n--- To 1337 ---")
+  println("I am elite." + " -> " + translate("I am elite.", true))
+  println("Da pain!" + " -> " + translate("Da pain!", true))
+  println("MOM" + " -> " + translate("MOM", true))
 
 }
