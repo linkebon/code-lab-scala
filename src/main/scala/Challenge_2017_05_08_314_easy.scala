@@ -25,24 +25,4 @@ object Challenge_2017_05_08_314_easy extends App {
   val t2 = System.nanoTime()
   val duration1 = Duration.fromNanos(t2 - t1)
   println(s"Smallest: $min Largest: $max. Time consumed: ${duration1.toMillis} ms")
-
-  // -- Version 2 without permutations
-  val smallest: (String, String) => Boolean = (a, b) => a < b
-  val largest: (String, String) => Boolean = (a, b) => a > b
-
-  def findNumber(numbers: String, sorting: (String, String) => Boolean): BigInt = {
-    BigInt(
-      numbers
-        .split(" ")
-        .toList
-        .sortWith(sorting)
-        .mkString)
-  }
-
-  val t3 = System.nanoTime()
-  private val smallestNumber = s"${findNumber(input, smallest)}"
-  private val largestNumber = s"${findNumber(input, largest)}"
-  val t4 = System.nanoTime()
-  val duration2 = Duration.fromNanos(t4 - t3)
-  println(s"Smallest: $smallestNumber, Largest: $largestNumber Time consumed: ${duration2.toMillis} ms")
 }
