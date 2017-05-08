@@ -5,18 +5,19 @@ import scala.io.StdIn
   * https://www.reddit.com/r/dailyprogrammer/comments/69y21t/20170508_challenge_314_easy_concatenated_integers/
   */
 object Challenge_2017_05_08_314_easy extends App {
+  // 79 82 34 83 69
+  // res: smallest: 3469798283 largest: 8382796934
   print("Enter numbers: ")
   val input = StdIn.readLine()
   val splitted = input.split(" ").toList
-  val permutations = splitted
+  val possibleNumbers = splitted
     .permutations
-    .map(_.toList)
+    .map { p =>
+      BigInt(p.fold("")(_ + _))
+    }
     .toList
 
-  val sorted = permutations.map { p =>
-    BigInt(p.fold("")(_ + _))
-  }
-  val min = sorted.min
-  val max = sorted.max
+  val min = possibleNumbers.min
+  val max = possibleNumbers.max
   println(s"Smallest: $min Largest: $max")
 }
