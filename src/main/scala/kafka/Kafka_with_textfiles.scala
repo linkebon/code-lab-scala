@@ -49,13 +49,16 @@ object Kafka_with_textfiles extends App {
   val producer = new Producer(kafkaProducer)
 
   // schedule stuff
-  system.scheduler.schedule(0.second, 100.milliseconds) {
+  system.scheduler.schedule(0.second, 1.second) {
     val bw = new BufferedWriter(new FileWriter(fileName, true))
-    bw.write(UUID.randomUUID().toString)
-    bw.newLine()
+    for (i <- 0 until 10) {
+      bw.write(UUID.randomUUID().toString)
+      bw.newLine()
+    }
     bw.flush()
     bw.close()
   }
+
   system.scheduler.schedule(1.second, 5.milliseconds)(producer.start(topic, fileName, codec))
   system.scheduler.schedule(2.second, 5.milliseconds)(consumer.start())
 }
