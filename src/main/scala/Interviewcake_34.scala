@@ -1,6 +1,6 @@
 import scala.collection.{immutable, mutable}
 
-object Test extends App {
+object Interviewcake_34 extends App {
   val dictionary = mutable.Map[String, Int]()
   val notWantedChars = Array(';', ':', '.', ',', '\'', '(', ')', '\'')
   var modifiedText = ""
