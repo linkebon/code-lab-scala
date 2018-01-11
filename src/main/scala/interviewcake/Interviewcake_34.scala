@@ -40,7 +40,7 @@ object Interviewcake_34 extends App with ExecutionTimeHelper {
     dictionary.foreach(println)
 
     def isEndingOfWordCharacter(c: Char): Boolean =
-      if(c == ';' || c == ':' || c == ',' || c == '.' || c == '\'' || c == '(' || c == ')' || c == ' ')
+      if (c == ';' || c == ':' || c == ',' || c == '.' || c == '\'' || c == '(' || c == ')' || c == ' ')
         true
       else
         false
@@ -57,14 +57,11 @@ object Interviewcake_34 extends App with ExecutionTimeHelper {
   // Solution 2. Little bit slower. Goes through input twice.
   time {
     val dictionary = mutable.Map[String, Int]()
-    val inputText = "We came, we saw, we conquered...then we ate Bill's (Mille-Feuille) cake. The bill came to five dollars."
-    var modifiedText = ""
-    inputText.foreach {
-      case char if isEndingOfWordCharacter(char) => modifiedText += " "
-      case char => modifiedText += char.toLower
-    }
-
-    modifiedText
+    "We came, we saw, we conquered...then we ate Bill's (Mille-Feuille) cake. The bill came to five dollars."
+      .map {
+        case char if isEndingOfWordCharacter(char) => ' '
+        case char => char.toLower
+      }
       .split(" ")
       .foreach { word =>
         if (dictionary.contains(word)) {
