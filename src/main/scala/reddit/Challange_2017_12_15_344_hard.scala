@@ -33,7 +33,7 @@ object Challange_2017_12_15_344_hard extends App with ExecutionTimeHelper {
       val regex: Regex ="""(http:\/\/)([a-zA-Z\.]*)(:[0-9]*)?""".r
       s match {
         case regex(_, host, null) => Url(host, 80)
-        case regex(_, host, port) => Url(host, port.toInt)
+        case regex(_, host, port) => Url(host, port.replace(":", "").toInt)
         case _ => throw new Exception("Could not handle url..")
       }
     }
@@ -52,7 +52,7 @@ object Challange_2017_12_15_344_hard extends App with ExecutionTimeHelper {
       socket.close()
     }
 
-    val url = "http://httpbin.org"
+    val url = "http://httpbin.org:80"
     get(parseUrl(url))
   }
 }
