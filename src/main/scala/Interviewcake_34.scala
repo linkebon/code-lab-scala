@@ -3,7 +3,7 @@ import util.ExecutionTimeHelper
 import scala.collection.mutable
 
 /**
-  *--- Solutions has to be run separately and not in the same time for correct time values. ---
+  * --- Solutions has to be run separately and not in the same time for correct time values. ---
   *
   * https://www.interviewcake.com/question/python/word-cloud
   *
@@ -21,22 +21,27 @@ import scala.collection.mutable
   * You could make a reasonable argument to use regex in your solution. We won't, mainly because performance is difficult to measure and can get pretty bad.
   */
 object Interviewcake_34 extends App with ExecutionTimeHelper {
-  // Solution 1. Little bit faster
+  // Solution 1. Faster. Goes through input once.
   time {
     val dictionary = mutable.Map[String, Int]()
-    val notWantedChars = Array(';', ':', '.', ',', '\'', '(', ')', '\'', ' ')
-    var text = "We came, we saw, we conquered...then we ate Bill's (Mille-Feuille) cake. The bill came to five dollars."
+    var inputText = "We came, we saw, we conquered...then we ate Bill's (Mille-Feuille) cake. The bill came to five dollars."
 
     var tempBuffer = ""
-    for (n <- 0 until text.length) {
-      if (notWantedChars.contains(text(n))) {
+    for (n <- 0 until inputText.length) {
+      if (isEndingOfWordCharacter(inputText(n))) {
         addOrUpdateDictionary(tempBuffer)
         tempBuffer = ""
       }
       else
-        tempBuffer += text(n).toLower
+        tempBuffer += inputText(n).toLower
     }
     dictionary.foreach(println)
+
+    def isEndingOfWordCharacter(c: Char): Boolean =
+      if(c == ';' || c == ':' || c == ',' || c == '.' || c == '\'' || c == '(' || c == ')' || c == ' ')
+        true
+      else
+        false
 
     def addOrUpdateDictionary(word: String): Unit = {
       word match {
@@ -47,27 +52,31 @@ object Interviewcake_34 extends App with ExecutionTimeHelper {
     }
   }
 
-  // Solution 2. Little bit slower.
+  // Solution 2. Little bit slower. Goes through input twice.
   time {
     val dictionary = mutable.Map[String, Int]()
-    val notWantedChars = Array(';', ':', '.', ',', '\'', '(', ')', '\'')
+    val inputText = "We came, we saw, we conquered...then we ate Bill's (Mille-Feuille) cake. The bill came to five dollars."
     var modifiedText = ""
-    "We came, we saw, we conquered...then we ate Bill's (Mille-Feuille) cake. The bill came to five dollars."
-      .foreach {
-        case char if notWantedChars.contains(char) => modifiedText += " "
-        case char => modifiedText += char.toLower
-      }
+    inputText.foreach {
+      case char if isEndingOfWordCharacter(char) => modifiedText += " "
+      case char => modifiedText += char.toLower
+    }
 
     modifiedText
       .split(" ")
-      .filterNot("".equalsIgnoreCase)
       .foreach { word =>
         if (dictionary.contains(word)) {
           dictionary(word) = dictionary(word) + 1
         } else {
-          dictionary += word -> 1
+          if (word != "") dictionary += word -> 1
         }
       }
     dictionary.foreach(println)
+
+    def isEndingOfWordCharacter(c: Char): Boolean =
+      if (c == ';' || c == ':' || c == ',' || c == '.' || c == '\'' || c == '(' || c == ')' || c == ' ')
+        true
+      else
+        false
   }
 }
