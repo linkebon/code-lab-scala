@@ -1,3 +1,5 @@
+package interviewcake
+
 import util.ExecutionTimeHelper
 
 import scala.collection.mutable
