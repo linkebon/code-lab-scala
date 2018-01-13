@@ -18,6 +18,7 @@ object CustomerExtractors extends App {
 
   def matchUser(user: Customer): Unit = {
     user match {
+      case FreeUser(firstName@"John", lastName) => println(s"[Free] User with first name $firstName")
       case FreeUser(firstName, lastName) => println(s"[Free] $firstName $lastName")
       case PremiumUser(firstName, lastName) => println(s"[Premium] $firstName $lastName")
       case _ => println("Not free or premium user")
@@ -25,6 +26,7 @@ object CustomerExtractors extends App {
   }
 
   matchUser(new FreeUser("John", "Doe"))
+  matchUser(new FreeUser("Harald", "Doe"))
   matchUser(new PremiumUser("Peter", "Johnson"))
   matchUser(new Customer {})
 
